@@ -907,6 +907,14 @@ async function buildProject( t ) {
 		const match = line.match( /^## +(\[?[^\] ]+\]?)/ );
 		if ( match && match[ 1 ] ) {
 			projectVersionNumber = match[ 1 ].replace( /[[\]]/g, '' );
+			if ( -1 !== projectVersionNumber.indexOf( 'alpha' ) ) {
+				projectVersionNumber =
+					projectVersionNumber +
+					'.' +
+					process.env.GITHUB_RUN_NUMBER +
+					'.' +
+					process.env.GITHUB_RUN_ATTEMPT;
+			}
 			rl.close();
 			rl.removeAllListeners();
 		}
