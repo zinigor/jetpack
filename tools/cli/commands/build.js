@@ -793,7 +793,10 @@ async function buildProject( t ) {
 							if ( ctxPkg.name === pkg ) {
 								let massagedVer = ctxPkg.version;
 								massagedVer = `^${ massagedVer }`;
-								if ( -1 !== massagedVer.indexOf( 'alpha' ) ) {
+								if (
+									-1 !== massagedVer.indexOf( 'alpha' ) &&
+									-1 === massagedVer.indexOf( 'alpha.' )
+								) {
 									massagedVer =
 										massagedVer +
 										'.' +
@@ -841,7 +844,10 @@ async function buildProject( t ) {
 							if ( ctxPkg.jsName === pkg ) {
 								let massagedVer = ctxPkg.version;
 								massagedVer = `^${ massagedVer }`;
-								if ( -1 !== massagedVer.indexOf( 'alpha' ) ) {
+								if (
+									-1 !== massagedVer.indexOf( 'alpha' ) &&
+									-1 === massagedVer.indexOf( 'alpha.' )
+								) {
 									massagedVer =
 										massagedVer +
 										'.' +
