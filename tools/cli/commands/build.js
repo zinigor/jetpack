@@ -793,6 +793,14 @@ async function buildProject( t ) {
 							if ( ctxPkg.name === pkg ) {
 								let massagedVer = ctxPkg.version;
 								massagedVer = `^${ massagedVer }`;
+								if ( -1 !== massagedVer.indexOf( 'alpha' ) ) {
+									massagedVer =
+										massagedVer +
+										'.' +
+										process.env.GITHUB_RUN_NUMBER +
+										'.' +
+										process.env.GITHUB_RUN_ATTEMPT;
+								}
 								composerJson[ key ][ pkg ] = massagedVer;
 								break;
 							}
@@ -833,6 +841,14 @@ async function buildProject( t ) {
 							if ( ctxPkg.jsName === pkg ) {
 								let massagedVer = ctxPkg.version;
 								massagedVer = `^${ massagedVer }`;
+								if ( -1 !== massagedVer.indexOf( 'alpha' ) ) {
+									massagedVer =
+										massagedVer +
+										'.' +
+										process.env.GITHUB_RUN_NUMBER +
+										'.' +
+										process.env.GITHUB_RUN_ATTEMPT;
+								}
 								packageJson[ key ][ pkg ] = massagedVer;
 								break;
 							}
