@@ -35,5 +35,4 @@ if [[ -n "$EXTRA" ]]; then
 	fi
 fi
 
-# pnpm jetpack dependencies list "${ARGS[@]}" | jq -ncR 'reduce inputs as $i ({}; .[$i] |= true)'
-echo "{\"monorepo\":true,\"packages/config\":true,\"plugins/social\":true}"
+pnpm jetpack dependencies list "${ARGS[@]}" | jq -ncR 'reduce inputs as $i ({}; .[$i] |= true)'
