@@ -931,6 +931,7 @@ async function buildProject( t ) {
 		jsName: packageJson?.name,
 		version: projectVersionNumber,
 	};
+	t.output( `\n=== ` + JSON.stringify( t.ctx.versions[ t.project ] ) + ` ===\n` );
 	await t.ctx.mirrorMutex( async () => {
 		// prettier-ignore
 		await fs.appendFile( `${ t.argv.forMirrors }/mirrors.txt`, `${ gitSlug }\n`, { encoding: 'utf8' } );
