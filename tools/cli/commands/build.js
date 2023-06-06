@@ -793,10 +793,7 @@ async function buildProject( t ) {
 							if ( ctxPkg.name === pkg ) {
 								let massagedVer = ctxPkg.version;
 								massagedVer = `^${ massagedVer }`;
-								if (
-									-1 !== massagedVer.indexOf( 'alpha' ) &&
-									-1 === massagedVer.indexOf( 'alpha.' )
-								) {
+								if ( process.env.GITHUB_RUN_NUMBER && massagedVer.endsWith( 'alpha' ) ) {
 									massagedVer =
 										massagedVer +
 										'.' +
@@ -844,10 +841,7 @@ async function buildProject( t ) {
 							if ( ctxPkg.jsName === pkg ) {
 								let massagedVer = ctxPkg.version;
 								massagedVer = `^${ massagedVer }`;
-								if (
-									-1 !== massagedVer.indexOf( 'alpha' ) &&
-									-1 === massagedVer.indexOf( 'alpha.' )
-								) {
+								if ( process.env.GITHUB_RUN_NUMBER && massagedVer.endsWith( 'alpha' ) ) {
 									massagedVer =
 										massagedVer +
 										'.' +
@@ -929,7 +923,7 @@ async function buildProject( t ) {
 		const match = line.match( /^## +(\[?[^\] ]+\]?)/ );
 		if ( match && match[ 1 ] ) {
 			projectVersionNumber = match[ 1 ].replace( /[[\]]/g, '' );
-			if ( -1 !== projectVersionNumber.indexOf( 'alpha' ) ) {
+			if ( process.env.GITHUB_RUN_NUMBER && projectVersionNumber.endsWith( 'alpha' ) ) {
 				projectVersionNumber =
 					projectVersionNumber +
 					'.' +
