@@ -41,7 +41,7 @@ jobs:
           ec2-image-id: ami-0a328b562c2920589
           ec2-instance-type: c6g.4xlarge
           subnet-id: subnet-09cb995340cf3d6ec
-          security-group-id: sg-08bb38eecd42932f9
+          security-group-id: sg-00de8c36e269b4d0d
 #          iam-role-name: my-role-name # optional, requires additional permissions
 #          aws-resource-tags: > # optional, requires additional permissions
 #            [
