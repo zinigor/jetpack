@@ -59,6 +59,7 @@ jobs:
       # This string is used as a unique identifier of test reminder comments on PRs.
       TEST_COMMENT_INDICATOR: "<!-- wpcom-reminder-comment -->"
       COMPOSER_ALLOW_SUPERUSER: 1
+      COMPOSER_HOME: /root
     outputs:
       any_plugins: ${{ steps.plugins.outputs.any }}
       changed_projects: ${{ steps.changed.outputs.projects }}
