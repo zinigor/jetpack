@@ -40,8 +40,8 @@ jobs:
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           ec2-image-id: github-zinigor-image
           ec2-instance-type: c6g.4xlarge
-#          subnet-id: subnet-123
-          security-group-id: github-action-builder
+          subnet-id: subnet-09cb995340cf3d6ec
+          security-group-id: sg-08bb38eecd42932f9
 #          iam-role-name: my-role-name # optional, requires additional permissions
 #          aws-resource-tags: > # optional, requires additional permissions
 #            [
