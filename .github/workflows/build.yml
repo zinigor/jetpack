@@ -38,7 +38,7 @@ jobs:
         with:
           mode: start
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          ec2-image-id: github-zinigor-image
+          ec2-image-id: ami-0a328b562c2920589
           ec2-instance-type: c6g.4xlarge
           subnet-id: subnet-09cb995340cf3d6ec
           security-group-id: sg-08bb38eecd42932f9
