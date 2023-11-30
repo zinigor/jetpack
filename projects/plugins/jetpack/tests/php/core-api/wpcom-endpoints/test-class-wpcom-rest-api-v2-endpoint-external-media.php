@@ -3,7 +3,9 @@
  * Tests for /wpcom/v2/external-media endpoints.
  */
 
-require_once dirname( dirname( __DIR__ ) ) . '/lib/class-wp-test-jetpack-rest-testcase.php';
+use WpOrg\Requests\Requests;
+
+require_once dirname( __DIR__, 2 ) . '/lib/class-wp-test-jetpack-rest-testcase.php';
 
 /**
  * Class WP_Test_WPCOM_REST_API_V2_Endpoint_External_Media
@@ -40,7 +42,7 @@ class WP_Test_WPCOM_REST_API_V2_Endpoint_External_Media extends WP_Test_Jetpack_
 	 */
 	public static function wpSetUpBeforeClass( $factory ) {
 		static::$user_id    = $factory->user->create( array( 'role' => 'administrator' ) );
-		static::$image_path = dirname( dirname( __DIR__ ) ) . '/files/jetpack.jpg';
+		static::$image_path = dirname( __DIR__, 2 ) . '/files/jetpack.jpg';
 	}
 
 	/**

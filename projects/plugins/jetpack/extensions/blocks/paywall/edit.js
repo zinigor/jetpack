@@ -16,11 +16,11 @@ function PaywallEdit( { className } ) {
 	const postType = useSelect( select => select( editorStore ).getCurrentPostType(), [] );
 	const accessLevel = useAccessLevel( postType );
 
-	const { stripeConnectUrl, hasNewsletterPlans } = useSelect( select => {
-		const { getNewsletterProducts, getConnectUrl } = select( 'jetpack/membership-products' );
+	const { stripeConnectUrl, hasTierPlans } = useSelect( select => {
+		const { getNewsletterTierProducts, getConnectUrl } = select( 'jetpack/membership-products' );
 		return {
 			stripeConnectUrl: getConnectUrl(),
-			hasNewsletterPlans: getNewsletterProducts()?.length !== 0,
+			hasTierPlans: getNewsletterTierProducts()?.length !== 0,
 		};
 	} );
 
@@ -35,10 +35,7 @@ function PaywallEdit( { className } ) {
 	}, [ accessLevel, setAccess ] );
 
 	function selectAccess( value ) {
-		if (
-			accessOptions.paid_subscribers.key === value &&
-			( stripeConnectUrl || ! hasNewsletterPlans )
-		) {
+		if ( accessOptions.paid_subscribers.key === value && ( stripeConnectUrl || ! hasTierPlans ) ) {
 			setShowDialog( true );
 			return;
 		}
@@ -131,10 +128,9 @@ function PaywallEdit( { className } ) {
 				>
 					<NewsletterAccessRadioButtons
 						isEditorPanel={ true }
-						onChange={ setAccess }
 						accessLevel={ _accessLevel }
 						stripeConnectUrl={ stripeConnectUrl }
-						hasNewsletterPlans={ hasNewsletterPlans }
+						hasTierPlans={ hasTierPlans }
 						postHasPaywallBlock={ true }
 					/>
 				</PanelBody>
